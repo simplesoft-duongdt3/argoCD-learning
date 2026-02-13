@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-demo
+  namespace: argocd
+spec:
+  project: default
+  source:
+    # ⚠️ THAY ĐỔI URL REPO CỦA BẠN TẠI ĐÂY
+    repoURL: https://github.com/<YOUR_USERNAME>/argocd-demo-app.git
+    targetRevision: HEAD
+    path: manifests
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: demo-app
+  syncPolicy:
+    automated:
+      # Tự sync khi Git thay đổi
+      selfHeal: true   # Tự sửa khi cluster bị drift
+      prune: true       # Tự xóa resource khi bị xóa khỏi Git
+    syncOptions:
+      - CreateNamespace=true
+      - PrunePropagationPolicy=foreground
+      - PruneLast=true

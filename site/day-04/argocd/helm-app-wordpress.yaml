@@ -1,0 +1,52 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: wordpress
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://charts.bitnami.com/bitnami
+    chart: wordpress
+    targetRevision: 22.4.17
+    helm:
+      releaseName: wordpress
+      values: |
+        # Blog title
+        wordpressUsername: admin
+        wordpressPassword: argocd-demo
+        wordpressBlogName: "ArgoCD Demo Blog"
+
+        # Service type
+        service:
+          type: NodePort
+
+        # MariaDB (built-in database)
+        mariadb:
+          auth:
+            rootPassword: root-password
+            password: wp-password
+          primary:
+            persistence:
+              enabled: false
+
+        # Tắt persistence cho demo
+        persistence:
+          enabled: false
+
+        # Resource limits
+        resources:
+          requests:
+            cpu: 200m
+            memory: 256Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: wordpress
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

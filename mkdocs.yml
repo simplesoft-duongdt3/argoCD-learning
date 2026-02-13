@@ -1,0 +1,59 @@
+site_name: ArgoCD 10-Day Course
+site_description: Khóa học ArgoCD thực hành từ cơ bản đến nâng cao
+site_author: Team CumaHay
+repo_url: https://github.com/simplesoft-duongdt3/argoCD-learning
+repo_name: simplesoft-duongdt3/argoCD-learning
+edit_uri: blob/main/
+
+theme:
+  name: material
+  language: vi
+  palette:
+    - scheme: default
+      primary: teal
+      accent: purple
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: teal
+      accent: lime
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.expand
+    - navigation.indexes
+    - content.code.copy
+    - content.tabs.link
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - toc:
+      permalink: true
+
+plugins:
+  - search
+
+# Use 'docs' directory for content (populated by CI)
+docs_dir: docs
+
+nav:
+  - Home: index.md
+  - Action Plan: next-action.md
+  - Day 01 - GitOps & Install: day-01/README.md
+  - Day 02 - First App: day-02/README.md
+  - Day 03 - Sync & Heal: day-03/README.md
+  - Day 04 - Helm Charts: day-04/README.md
+  - Day 05 - Kustomize: day-05/README.md
+  - Day 06 - Multi-Cluster: day-06/README.md
+  - Day 07 - App of Apps: day-07/README.md
+  - Day 08 - ApplicationSet: day-08/README.md
+  - Day 09 - Security & RBAC: day-09/README.md
+  - Day 10 - Rollouts: day-10/README.md

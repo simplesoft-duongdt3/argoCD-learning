@@ -1,0 +1,34 @@
+# ⚠️ FILE THAM KHẢO - Không apply trực tiếp
+# Đây là mẫu cấu hình SSO với Google OAuth
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+  namespace: argocd
+data:
+  # URL của ArgoCD server
+  url: https://argocd.example.com
+
+  # OIDC Config (Google OAuth)
+  oidc.config: |
+    name: Google
+    issuer: https://accounts.google.com
+    clientID: YOUR_GOOGLE_CLIENT_ID
+    clientSecret: $oidc.google.clientSecret   # Tham chiếu từ argocd-secret
+    requestedScopes:
+      - openid
+      - profile
+      - email
+
+  # Hoặc dùng Dex (built-in OIDC proxy)
+  # dex.config: |
+  #   connectors:
+  #     - type: github
+  #       id: github
+  #       name: GitHub
+  #       config:
+  #         clientID: YOUR_GITHUB_CLIENT_ID
+  #         clientSecret: $dex.github.clientSecret
+  #         orgs:
+  #           - name: your-github-org

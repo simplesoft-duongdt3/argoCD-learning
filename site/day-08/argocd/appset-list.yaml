@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: appset-list-demo
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - name: web-dev
+            namespace: web-dev
+            env: development
+          - name: web-staging
+            namespace: web-staging
+            env: staging
+          - name: web-prod
+            namespace: web-prod
+            env: production
+  template:
+    metadata:
+      name: '{{name}}'
+    spec:
+      project: default
+      source:
+        # ⚠️ THAY ĐỔI URL REPO CỦA BẠN TẠI ĐÂY
+        repoURL: https://github.com/<YOUR_USERNAME>/argocd-demo-app.git
+        targetRevision: HEAD
+        path: manifests
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{namespace}}'
+      syncPolicy:
+        automated:
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true

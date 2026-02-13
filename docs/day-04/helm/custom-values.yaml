@@ -1,0 +1,33 @@
+# Custom values mẫu để override
+# Sử dụng khi muốn override values cho Redis chart
+
+# Bật master-slave mode
+architecture: replication
+
+# Bật authentication
+auth:
+  enabled: true
+  password: "my-secure-password"
+
+# Replica configuration
+replica:
+  replicaCount: 2
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 256Mi
+
+# Master configuration
+master:
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 256Mi
+  persistence:
+    enabled: false

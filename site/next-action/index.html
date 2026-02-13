@@ -1,0 +1,1047 @@
+
+<!doctype html>
+<html lang="vi" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Khóa học ArgoCD thực hành từ cơ bản đến nâng cao">
+      
+      
+        <meta name="author" content="Team CumaHay">
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../day-01/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Action Plan - ArgoCD 10-Day Course</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#anh-gia-cac-buoc-tiep-theo-next-actions" class="md-skip">
+          Bỏ qua
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Đầu trang">
+    <a href=".." title="ArgoCD 10-Day Course" class="md-header__button md-logo" aria-label="ArgoCD 10-Day Course" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ArgoCD 10-Day Course
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Action Plan
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Tìm kiếm" placeholder="Tìm kiếm" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Tìm kiếm">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Xoá" aria-label="Xoá" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/simplesoft-duongdt3/argoCD-learning" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    simplesoft-duongdt3/argoCD-learning
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Thanh điều hướng" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="ArgoCD 10-Day Course" class="md-nav__button md-logo" aria-label="ArgoCD 10-Day Course" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ArgoCD 10-Day Course
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/simplesoft-duongdt3/argoCD-learning" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    simplesoft-duongdt3/argoCD-learning
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Action Plan
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Action Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-anh-gia-hien-trang" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Đánh Giá Hiện Trạng
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Đánh Giá Hiện Trạng">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#iem-manh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟢 Điểm mạnh
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iem-can-cai-thien-bo-sung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟡 Điểm cần cải thiện / Bổ sung
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-ke-hoach-hanh-ong-tiep-theo-action-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Kế Hoạch Hành Động Tiếp Theo (Action Plan)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Kế Hoạch Hành Động Tiếp Theo (Action Plan)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#giai-oan-1-kiem-thu-hoan-thien-ngay-lap-tuc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 Giai đoạn 1: Kiểm thử &amp; Hoàn thiện (Ngay lập tức)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#giai-oan-2-bo-sung-day-11-nang-cao-devops-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📦 Giai đoạn 2: Bổ sung "Day 11+" (Nâng cao &amp; DevOps Flow)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#giai-oan-3-ong-goi-phan-phoi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 Giai đoạn 3: Đóng gói &amp; Phân phối
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#giai-oan-4-cong-ong-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🤝 Giai đoạn 4: Cộng đồng &amp; Support
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-goi-y-cau-truc-repository-cho-hoc-vien" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Gợi ý cấu trúc Repository cho Học viên
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day-01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Day 01 - GitOps & Install
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day-02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Day 02 - First App
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day-03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Day 03 - Sync & Heal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day-04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Day 04 - Helm Charts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day-05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Day 05 - Kustomize
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day-06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Day 06 - Multi-Cluster
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day-07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Day 07 - App of Apps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day-08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Day 08 - ApplicationSet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day-09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Day 09 - Security & RBAC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../day-10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Day 10 - Rollouts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-anh-gia-hien-trang" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Đánh Giá Hiện Trạng
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Đánh Giá Hiện Trạng">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#iem-manh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟢 Điểm mạnh
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iem-can-cai-thien-bo-sung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟡 Điểm cần cải thiện / Bổ sung
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-ke-hoach-hanh-ong-tiep-theo-action-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Kế Hoạch Hành Động Tiếp Theo (Action Plan)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Kế Hoạch Hành Động Tiếp Theo (Action Plan)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#giai-oan-1-kiem-thu-hoan-thien-ngay-lap-tuc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 Giai đoạn 1: Kiểm thử &amp; Hoàn thiện (Ngay lập tức)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#giai-oan-2-bo-sung-day-11-nang-cao-devops-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📦 Giai đoạn 2: Bổ sung "Day 11+" (Nâng cao &amp; DevOps Flow)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#giai-oan-3-ong-goi-phan-phoi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 Giai đoạn 3: Đóng gói &amp; Phân phối
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#giai-oan-4-cong-ong-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🤝 Giai đoạn 4: Cộng đồng &amp; Support
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-goi-y-cau-truc-repository-cho-hoc-vien" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Gợi ý cấu trúc Repository cho Học viên
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="anh-gia-cac-buoc-tiep-theo-next-actions">✅ Đánh Giá &amp; Các Bước Tiếp Theo (Next Actions)<a class="headerlink" href="#anh-gia-cac-buoc-tiep-theo-next-actions" title="Permanent link">&para;</a></h1>
+<p>Sau khi review toàn bộ nội dung khóa học 10 ngày ArgoCD, dưới đây là nhận xét tổng quan và các đề xuất hành động tiếp theo để hoàn thiện khóa học.</p>
+<h2 id="1-anh-gia-hien-trang">1. Đánh Giá Hiện Trạng<a class="headerlink" href="#1-anh-gia-hien-trang" title="Permanent link">&para;</a></h2>
+<h3 id="iem-manh">🟢 Điểm mạnh<a class="headerlink" href="#iem-manh" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Cấu trúc rõ ràng:</strong> Mỗi ngày đều có <code>README</code> (lý thuyết), <code>manifests</code> (thực hành), <code>exercises</code> (bài tập), <code>questions</code> (ôn tập).</li>
+<li><strong>Tính thực chiến cao:</strong> Scripts cài đặt tự động, file YAML sẵn sàng chạy, không cần config thủ công nhiều.</li>
+<li><strong>Bao phủ rộng:</strong> Từ cơ bản (cài đặt, deploy app) đến nâng cao (Multi-cluster, ApplicationSet, Rollouts).</li>
+<li><strong>Hỗ trợ người học:</strong> Có Checklist bài tập và Q&amp;A chi tiết với đáp án ẩn (<code>&lt;details&gt;</code>).</li>
+</ul>
+<h3 id="iem-can-cai-thien-bo-sung">🟡 Điểm cần cải thiện / Bổ sung<a class="headerlink" href="#iem-can-cai-thien-bo-sung" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Diagrams:</strong> Hiện tại dùng ASCII art. Nên thay bằng ảnh sơ đồ kiến trúc thực tế hoặc Mermaid diagrams phức tạp hơn để trực quan.</li>
+<li><strong>Secret Management:</strong> Mới chỉ đề cập lý thuyết ở Day 09. Thiếu bài thực hành cụ thể về <strong>Sealed Secrets</strong> hoặc <strong>External Secrets Operator</strong> (ESO) - vấn đề thực tế rất quan trọng.</li>
+<li><strong>CI Integration:</strong> Chưa có bài thực hành tích hợp với CI (GitHub Actions/GitLab CI) để update image tag tự động.</li>
+<li><strong>Monitoring:</strong> Chưa hướng dẫn cài đặt Prometheus/Grafana để theo dõi ArgoCD metrics.</li>
+<li><strong>ArgoCD Image Updater:</strong> Một tool rất phổ biến đi kèm ArgoCD chưa được nhắc đến.</li>
+</ul>
+<hr />
+<h2 id="2-ke-hoach-hanh-ong-tiep-theo-action-plan">2. Kế Hoạch Hành Động Tiếp Theo (Action Plan)<a class="headerlink" href="#2-ke-hoach-hanh-ong-tiep-theo-action-plan" title="Permanent link">&para;</a></h2>
+<h3 id="giai-oan-1-kiem-thu-hoan-thien-ngay-lap-tuc">🚀 Giai đoạn 1: Kiểm thử &amp; Hoàn thiện (Ngay lập tức)<a class="headerlink" href="#giai-oan-1-kiem-thu-hoan-thien-ngay-lap-tuc" title="Permanent link">&para;</a></h3>
+<ul>
+<li>[ ] <strong>Dry Run toàn bộ khóa học:</strong> Tự chạy lại từ Day 01 -&gt; Day 10 trên một máy sạch (clean VM/Mac) để đảm bảo không sót bước nào.</li>
+<li>[ ] <strong>Review lại Link/References:</strong> Kiểm tra các link trích dẫn trong README có còn hoạt động không.</li>
+<li>[ ] <strong>Spell check:</strong> Rà soát lỗi chính tả tiếng Việt/Anh.</li>
+<li>[ ] <strong>Update README:</strong> Thêm bảng mục lục (ToC) và link nhảy nhanh giữa các ngày.</li>
+<li>[ ] <strong>Verify Exercises:</strong> Chạy thử tất cả các bài tập để đảm bảo file <code>exercise.md</code> checklist là chính xác.</li>
+</ul>
+<h3 id="giai-oan-2-bo-sung-day-11-nang-cao-devops-flow">📦 Giai đoạn 2: Bổ sung "Day 11+" (Nâng cao &amp; DevOps Flow)<a class="headerlink" href="#giai-oan-2-bo-sung-day-11-nang-cao-devops-flow" title="Permanent link">&para;</a></h3>
+<p>Nếu muốn khóa học <em>hoàn hảo</em> hơn, cân nhắc thêm các nội dung phụ trợ:</p>
+<ol>
+<li><strong>Lab: Secrets Management Deep Dive:</strong><ul>
+<li>Thêm hướng dẫn cài <code>bitnami/sealed-secrets</code>.</li>
+<li>Tạo Secret mã hóa và commit lên Git.</li>
+<li>Demo decrypt secret trong pod.</li>
+</ul>
+</li>
+<li><strong>Lab: CI/CD Pipeline Integration:</strong><ul>
+<li>Tạo GitHub Actions workflow đơn giản: Build Docker image -&gt; Push Docker Hub -&gt; Update Helm value/Kustomize image tag trong Git repo -&gt; ArgoCD sync.</li>
+<li>Demo "GitOps Bridge" pattern.</li>
+</ul>
+</li>
+<li><strong>Lab: ArgoCD Image Updater:</strong><ul>
+<li>Cài đặt Image Updater để tự động theo dõi Docker Hub tags (thay thế CI push).</li>
+</ul>
+</li>
+<li><strong>Lab: Monitoring &amp; Alerting:</strong><ul>
+<li>Cài Prometheus + Grafana stack.</li>
+<li>Import ArgoCD Grafana Dashboard.</li>
+<li>Setup AlertManager rule khi App Failed/Degraded.</li>
+</ul>
+</li>
+</ol>
+<h3 id="giai-oan-3-ong-goi-phan-phoi">📚 Giai đoạn 3: Đóng gói &amp; Phân phối<a class="headerlink" href="#giai-oan-3-ong-goi-phan-phoi" title="Permanent link">&para;</a></h3>
+<ul>
+<li>[ ] <strong>Tạo Repository mẫu (Template Repo):</strong><ul>
+<li>Tạo một repo Git sạch chứa cấu trúc khóa học.</li>
+<li>Người học sẽ <code>fork</code> repo này về để làm bài tập.</li>
+</ul>
+</li>
+<li>[ ] <strong>Quay Video hướng dẫn:</strong><ul>
+<li>Mỗi ngày 1 video ngắn (15-20p) demo các bước chạy script và giải thích manifest.</li>
+</ul>
+</li>
+<li>[ ] <strong>Xuất bản lên GitHub Pages/GitBook:</strong><ul>
+<li>Dùng MkDocs hoặc GitBook để render các file Markdown thành website dễ đọc, tìm kiếm.</li>
+</ul>
+</li>
+<li>[ ] <strong>Slide bài giảng:</strong><ul>
+<li>Tạo slide tóm tắt lý thuyết cho mỗi ngày (dùng Google Slides hoặc Marp).</li>
+</ul>
+</li>
+</ul>
+<h3 id="giai-oan-4-cong-ong-support">🤝 Giai đoạn 4: Cộng đồng &amp; Support<a class="headerlink" href="#giai-oan-4-cong-ong-support" title="Permanent link">&para;</a></h3>
+<ul>
+<li>[ ] <strong>Tạo Discord/Slack Channel:</strong> Nơi học viên thảo luận và hỏi đáp.</li>
+<li>[ ] <strong>Weekly Q&amp;A Session:</strong> Livestream giải đáp thắc mắc.</li>
+<li>[ ] <strong>Contribution Guide:</strong> Hướng dẫn học viên đóng góp (fix typo, thêm bài tập) vào repo khóa học.</li>
+</ul>
+<hr />
+<h2 id="3-goi-y-cau-truc-repository-cho-hoc-vien">3. Gợi ý cấu trúc Repository cho Học viên<a class="headerlink" href="#3-goi-y-cau-truc-repository-cho-hoc-vien" title="Permanent link">&para;</a></h2>
+<p>Nên tạo một repo riêng <code>argocd-course-labs</code> để học viên fork, cấu trúc như sau:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>argocd-course-labs/
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── .github/workflows/    # CI pipelines mẫu
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├── apps/                 # Nơi học viên sẽ tạo App of Apps / ApplicationSets
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>├── charts/               # Helm charts mẫu
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>├── kustomize/            # Kustomize bases
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>└── README.md             # Hướng dẫn setup môi trường lab
+</code></pre></div>
+<p>Khóa học hiện tại (<code>argocd/</code>) là tài liệu tham khảo (Solution), còn repo <code>argocd-course-labs</code> là nơi họ làm bài tập (Environment).</p>
+<hr />
+<blockquote>
+<p><strong>Tóm lại:</strong> Nội dung hiện tại đã <strong>đủ tốt</strong> để release phiên bản v1.0. Các phần bổ sung (Secrets, CI, Monitoring) nên được ưu tiên trong bản update v1.1.</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.expand", "navigation.indexes", "content.code.copy", "content.tabs.link"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
