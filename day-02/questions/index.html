@@ -1,0 +1,1789 @@
+
+<!doctype html>
+<html lang="vi" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Khóa học ArgoCD thực hành từ cơ bản đến nâng cao">
+      
+      
+        <meta name="author" content="Team CumaHay">
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>❓ Câu Hỏi Ôn Tập — Ngày 2: Kết Nối Repository & Ứng Dụng Đầu Tiên - ArgoCD 10-Day Course</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cau-hoi-on-tap-ngay-2-ket-noi-repository-ung-dung-au-tien" class="md-skip">
+          Bỏ qua
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Đầu trang">
+    <a href="../.." title="ArgoCD 10-Day Course" class="md-header__button md-logo" aria-label="ArgoCD 10-Day Course" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ArgoCD 10-Day Course
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ❓ Câu Hỏi Ôn Tập — Ngày 2: Kết Nối Repository &amp; Ứng Dụng Đầu Tiên
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Tìm kiếm" placeholder="Tìm kiếm" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Tìm kiếm">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Xoá" aria-label="Xoá" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/simplesoft-duongdt3/argoCD-learning" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    simplesoft-duongdt3/argoCD-learning
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Thanh điều hướng" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="ArgoCD 10-Day Course" class="md-nav__button md-logo" aria-label="ArgoCD 10-Day Course" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ArgoCD 10-Day Course
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/simplesoft-duongdt3/argoCD-learning" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    simplesoft-duongdt3/argoCD-learning
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../next-action/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Action Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../day-01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Day 01 - GitOps & Install
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Day 02 - First App
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../day-03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Day 03 - Sync & Heal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../day-04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Day 04 - Helm Charts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../day-05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Day 05 - Kustomize
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../day-06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Day 06 - Multi-Cluster
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../day-07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Day 07 - App of Apps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../day-08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Day 08 - ApplicationSet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../day-09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Day 09 - Security & RBAC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../day-10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Day 10 - Rollouts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#phan-1-application-concepts-cau-1-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phần 1: Application Concepts (Câu 1-10)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phần 1: Application Concepts (Câu 1-10)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cau-1-application-trong-argocd-gom-nhung-thanh-phan-cau-hinh-chinh-nao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Câu 1: Application trong ArgoCD gồm những thành phần cấu hình chính nào?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cau-2-targetrevision-head-nghia-la-gi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Câu 2: targetRevision: HEAD nghĩa là gì?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cau-3-mo-ta-3-cach-tao-application-tren-argocd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Câu 3: Mô tả 3 cách tạo Application trên ArgoCD?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cau-4-httpskubernetesdefaultsvc-la-gi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Câu 4: https://kubernetes.default.svc là gì?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cau-5-sync-status-co-nhung-trang-thai-nao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Câu 5: Sync Status có những trạng thái nào?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cau-6-health-status-co-nhung-trang-thai-nao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Câu 6: Health Status có những trạng thái nào?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cau-7-argocd-app-sync-va-argocd-app-refresh-khac-nhau-the-nao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Câu 7: argocd app sync và argocd app refresh khác nhau thế nào?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cau-8-sync-option-createnamespacetrue-dung-e-lam-gi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Câu 8: Sync Option CreateNamespace=true dùng để làm gì?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cau-9-lam-sao-xem-chi-tiet-trang-thai-cua-mot-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Câu 9: Làm sao xem chi tiết trạng thái của một Application?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cau-10-lenh-nao-xoa-mot-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Câu 10: Lệnh nào xóa một Application?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phan-2-repository-ket-noi-cau-11-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phần 2: Repository &amp; Kết Nối (Câu 11-20)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phần 2: Repository &amp; Kết Nối (Câu 11-20)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cau-11-argocd-ho-tro-nhung-loai-repository-nao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Câu 11: ArgoCD hỗ trợ những loại repository nào?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cau-12-ket-noi-private-git-repo-bang-https-can-gi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Câu 12: Kết nối private Git repo bằng HTTPS cần gì?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cau-13-ket-noi-private-git-repo-bang-ssh-key-can-gi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Câu 13: Kết nối private Git repo bằng SSH key cần gì?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cau-14-webhook-va-polling-khac-nhau-the-nao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Câu 14: Webhook và Polling khác nhau thế nào?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cau-15-polling-interval-mac-inh-la-bao-lau-thay-oi-the-nao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Câu 15: Polling interval mặc định là bao lâu? Thay đổi thế nào?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cau-16-cau-hinh-webhook-cho-github-nhu-the-nao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Câu 16: Cấu hình webhook cho GitHub như thế nào?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cau-17-argocd-repo-list-hien-thi-gi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Câu 17: argocd repo list hiển thị gì?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cau-18-mot-application-co-the-tro-en-nhieu-path-trong-cung-repo-khong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Câu 18: Một Application có thể trỏ đến nhiều path trong cùng repo không?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cau-19-co-the-deploy-nhieu-application-tu-cung-1-repo-khong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Câu 19: Có thể deploy nhiều Application từ cùng 1 repo không?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cau-20-application-bi-trang-thai-comparisonerror-la-do-au" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Câu 20: Application bị trạng thái "ComparisonError" là do đâu?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phan-3-thuc-hanh-troubleshooting-cau-21-30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phần 3: Thực Hành &amp; Troubleshooting (Câu 21-30)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phần 3: Thực Hành &amp; Troubleshooting (Câu 21-30)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cau-21-tao-deployment-yaml-cho-nginx-voi-resource-limits-viet-mau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Câu 21: Tạo Deployment YAML cho Nginx với resource limits — viết mẫu?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cau-22-tai-sao-nen-dung-nginx125-alpine-thay-vi-nginxlatest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Câu 22: Tại sao nên dùng nginx:1.25-alpine thay vì nginx:latest?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cau-23-service-type-nodeport-va-clusterip-khac-nhau-the-nao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Câu 23: Service type NodePort và ClusterIP khác nhau thế nào?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cau-24-lam-sao-kiem-tra-application-a-sync-thanh-cong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Câu 24: Làm sao kiểm tra Application đã sync thành công?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cau-25-argocd-app-diff-hien-thi-gi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Câu 25: argocd app diff hiển thị gì?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cau-26-loi-the-server-could-not-find-the-requested-resource-khi-sync-la-do-au" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Câu 26: Lỗi "the server could not find the requested resource" khi sync là do đâu?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cau-27-argocd-app-history-dung-e-lam-gi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Câu 27: argocd app history dùng để làm gì?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cau-28-rollback-bang-argocd-cli-nhu-the-nao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Câu 28: Rollback bằng ArgoCD CLI như thế nào?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cau-29-nhieu-nguoi-cung-commit-vao-repo-thi-argocd-xu-ly-the-nao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Câu 29: Nhiều người cùng commit vào repo thì ArgoCD xử lý thế nào?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cau-30-tai-sao-nen-tach-git-repo-cho-config-manifests-va-source-code-app-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Câu 30: Tại sao nên tách Git repo cho config (manifests) và source code (app code)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="cau-hoi-on-tap-ngay-2-ket-noi-repository-ung-dung-au-tien">❓ Câu Hỏi Ôn Tập — Ngày 2: Kết Nối Repository &amp; Ứng Dụng Đầu Tiên<a class="headerlink" href="#cau-hoi-on-tap-ngay-2-ket-noi-repository-ung-dung-au-tien" title="Permanent link">&para;</a></h1>
+<h2 id="phan-1-application-concepts-cau-1-10">Phần 1: Application Concepts (Câu 1-10)<a class="headerlink" href="#phan-1-application-concepts-cau-1-10" title="Permanent link">&para;</a></h2>
+<h3 id="cau-1-application-trong-argocd-gom-nhung-thanh-phan-cau-hinh-chinh-nao">Câu 1: Application trong ArgoCD gồm những thành phần cấu hình chính nào?<a class="headerlink" href="#cau-1-application-trong-argocd-gom-nhung-thanh-phan-cau-hinh-chinh-nao" title="Permanent link">&para;</a></h3>
+<details class="success">
+<summary>📖 Đáp án</summary>
+<p>Một Application trong ArgoCD gồm 3 thành phần chính:</p>
+<ol>
+<li><strong>Source</strong> — Nơi lấy manifests</li>
+<li><code>repoURL</code> — URL Git repo hoặc Helm repo</li>
+<li><code>targetRevision</code> — Branch/tag/commit</li>
+<li>
+<p><code>path</code> — Thư mục chứa manifests</p>
+</li>
+<li>
+<p><strong>Destination</strong> — Nơi deploy</p>
+</li>
+<li><code>server</code> — URL của K8s cluster</li>
+<li>
+<p><code>namespace</code> — Namespace đích</p>
+</li>
+<li>
+<p><strong>Sync Policy</strong> — Chính sách đồng bộ</p>
+</li>
+<li>Manual hoặc Automated</li>
+<li>selfHeal, prune options</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">spec</span><span class="p">:</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">source</span><span class="p">:</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">repoURL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/user/repo.git</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">manifests</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nt">targetRevision</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HEAD</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="nt">destination</span><span class="p">:</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://kubernetes.default.svc</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-app</span>
+</code></pre></div>
+</details>
+<hr />
+<h3 id="cau-2-targetrevision-head-nghia-la-gi">Câu 2: <code>targetRevision: HEAD</code> nghĩa là gì?<a class="headerlink" href="#cau-2-targetrevision-head-nghia-la-gi" title="Permanent link">&para;</a></h3>
+<details class="success">
+<summary>📖 Đáp án</summary>
+<p><code>HEAD</code> trỏ đến <strong>commit mới nhất</strong> trên branch mặc định (thường là <code>main</code> hoặc <code>master</code>).</p>
+<p><strong>Các giá trị khả dụng cho targetRevision:</strong>
+| Giá trị | Mô tả |
+|---------|--------|
+| <code>HEAD</code> | Commit mới nhất trên default branch |
+| <code>main</code> | Branch <code>main</code> |
+| <code>v1.0.0</code> | Tag cụ thể |
+| <code>abc123</code> | Commit hash cụ thể |
+| <code>refs/heads/feature-x</code> | Branch cụ thể |</p>
+<p><strong>Best practice production:</strong> Dùng <strong>tag</strong> hoặc <strong>commit hash</strong> thay vì <code>HEAD</code> để tránh deploy code chưa tested.</p>
+</details>
+<hr />
+<h3 id="cau-3-mo-ta-3-cach-tao-application-tren-argocd">Câu 3: Mô tả 3 cách tạo Application trên ArgoCD?<a class="headerlink" href="#cau-3-mo-ta-3-cach-tao-application-tren-argocd" title="Permanent link">&para;</a></h3>
+<details class="success">
+<summary>📖 Đáp án</summary>
+<p><strong>Cách 1: CLI</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>argocd<span class="w"> </span>app<span class="w"> </span>create<span class="w"> </span>my-app<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span>--repo<span class="w"> </span>https://github.com/user/repo.git<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span>--path<span class="w"> </span>manifests<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span>--dest-server<span class="w"> </span>https://kubernetes.default.svc<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span>--dest-namespace<span class="w"> </span>default
+</code></pre></div></p>
+<p><strong>Cách 2: YAML manifest</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>application.yaml
+</code></pre></div></p>
+<p><strong>Cách 3: Web UI</strong>
+1. Click "+ NEW APP"
+2. Điền form
+3. Click "CREATE"</p>
+<p><strong>Best practice:</strong> Dùng <strong>YAML manifest</strong> vì có thể version control trong Git (GitOps cho chính ArgoCD!).</p>
+</details>
+<hr />
+<h3 id="cau-4-httpskubernetesdefaultsvc-la-gi">Câu 4: <code>https://kubernetes.default.svc</code> là gì?<a class="headerlink" href="#cau-4-httpskubernetesdefaultsvc-la-gi" title="Permanent link">&para;</a></h3>
+<details class="success">
+<summary>📖 Đáp án</summary>
+<p>Đây là <strong>internal DNS</strong> của Kubernetes API server, được resolve bởi CoreDNS trong cluster.</p>
+<p><strong>Ý nghĩa:</strong>
+- <code>kubernetes</code> — Service name
+- <code>default</code> — Namespace
+- <code>svc</code> — Service DNS suffix
+- → Trỏ đến cluster <strong>mà ArgoCD đang chạy</strong> (in-cluster)</p>
+<p><strong>Khi nào dùng URL khác?</strong>
+- Deploy lên cluster <strong>khác</strong> (external cluster)
+- URL lấy từ <code>argocd cluster list</code></p>
+</details>
+<hr />
+<h3 id="cau-5-sync-status-co-nhung-trang-thai-nao">Câu 5: Sync Status có những trạng thái nào?<a class="headerlink" href="#cau-5-sync-status-co-nhung-trang-thai-nao" title="Permanent link">&para;</a></h3>
+<details class="success">
+<summary>📖 Đáp án</summary>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Ý nghĩa</th>
+<th>Icon</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Synced</strong></td>
+<td>Git state = Cluster state</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td><strong>OutOfSync</strong></td>
+<td>Git state ≠ Cluster state</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td><strong>Unknown</strong></td>
+<td>Không xác định được (thường do lỗi kết nối Git)</td>
+<td>❓</td>
+</tr>
+</tbody>
+</table>
+<p><strong>OutOfSync xảy ra khi:</strong>
+1. Có commit mới trên Git nhưng chưa sync
+2. Ai đó <code>kubectl edit</code> trực tiếp trên cluster
+3. Application vừa được tạo nhưng chưa sync lần đầu</p>
+</details>
+<hr />
+<h3 id="cau-6-health-status-co-nhung-trang-thai-nao">Câu 6: Health Status có những trạng thái nào?<a class="headerlink" href="#cau-6-health-status-co-nhung-trang-thai-nao" title="Permanent link">&para;</a></h3>
+<details class="success">
+<summary>📖 Đáp án</summary>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Ý nghĩa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Healthy</strong></td>
+<td>Tất cả resources đang hoạt động bình thường</td>
+</tr>
+<tr>
+<td><strong>Progressing</strong></td>
+<td>Có resources đang cập nhật (pods starting)</td>
+</tr>
+<tr>
+<td><strong>Degraded</strong></td>
+<td>Có resources bị lỗi (CrashLoopBackOff, etc.)</td>
+</tr>
+<tr>
+<td><strong>Suspended</strong></td>
+<td>Resources đang bị tạm dừng (scaled to 0)</td>
+</tr>
+<tr>
+<td><strong>Missing</strong></td>
+<td>Resources chưa tồn tại trên cluster</td>
+</tr>
+<tr>
+<td><strong>Unknown</strong></td>
+<td>Không xác định được health</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Healthy = tất cả Deployment available, Pods running, Services active.</strong></p>
+</details>
+<hr />
+<h3 id="cau-7-argocd-app-sync-va-argocd-app-refresh-khac-nhau-the-nao">Câu 7: <code>argocd app sync</code> và <code>argocd app refresh</code> khác nhau thế nào?<a class="headerlink" href="#cau-7-argocd-app-sync-va-argocd-app-refresh-khac-nhau-the-nao" title="Permanent link">&para;</a></h3>
+<details class="success">
+<summary>📖 Đáp án</summary>
+<table>
+<thead>
+<tr>
+<th>Lệnh</th>
+<th>Chức năng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>argocd app refresh &lt;app&gt;</code></td>
+<td>Kiểm tra Git xem có thay đổi gì mới không (chỉ <strong>detect</strong>, không apply)</td>
+</tr>
+<tr>
+<td><code>argocd app sync &lt;app&gt;</code></td>
+<td>Apply thay đổi từ Git lên cluster (thực sự <strong>deploy</strong>)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Flow:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>refresh → detect OutOfSync → sync → apply changes → Synced
+</code></pre></div></p>
+<p><code>refresh</code> giống "kiểm tra email", <code>sync</code> giống "reply email".</p>
+</details>
+<hr />
+<h3 id="cau-8-sync-option-createnamespacetrue-dung-e-lam-gi">Câu 8: Sync Option <code>CreateNamespace=true</code> dùng để làm gì?<a class="headerlink" href="#cau-8-sync-option-createnamespacetrue-dung-e-lam-gi" title="Permanent link">&para;</a></h3>
+<details class="success">
+<summary>📖 Đáp án</summary>
+<p>Khi Application deploy vào namespace chưa tồn tại, ArgoCD <strong>mặc định sẽ báo lỗi</strong>. Option <code>CreateNamespace=true</code> bảo ArgoCD <strong>tự tạo namespace</strong> nếu chưa có.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">syncPolicy</span><span class="p">:</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nt">syncOptions</span><span class="p">:</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CreateNamespace=true</span>
+</code></pre></div>
+<p><strong>Khi nào nên bật?</strong>
+- ✅ Dev/staging environments
+- ⚠️ Production — cân nhắc, có thể muốn tạo namespace manually với labels/annotations cụ thể</p>
+</details>
+<hr />
+<h3 id="cau-9-lam-sao-xem-chi-tiet-trang-thai-cua-mot-application">Câu 9: Làm sao xem chi tiết trạng thái của một Application?<a class="headerlink" href="#cau-9-lam-sao-xem-chi-tiet-trang-thai-cua-mot-application" title="Permanent link">&para;</a></h3>
+<details class="success">
+<summary>📖 Đáp án</summary>
+<p><strong>CLI:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Tổng quan</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>argocd<span class="w"> </span>app<span class="w"> </span>get<span class="w"> </span>&lt;app-name&gt;
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Chi tiết resources</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>argocd<span class="w"> </span>app<span class="w"> </span>get<span class="w"> </span>&lt;app-name&gt;<span class="w"> </span>--show-operation
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># Xem diff (Git vs Cluster)</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>argocd<span class="w"> </span>app<span class="w"> </span>diff<span class="w"> </span>&lt;app-name&gt;
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="c1"># Xem logs</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>argocd<span class="w"> </span>app<span class="w"> </span>logs<span class="w"> </span>&lt;app-name&gt;
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="c1"># Xem resource tree</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>argocd<span class="w"> </span>app<span class="w"> </span>resources<span class="w"> </span>&lt;app-name&gt;
+</code></pre></div></p>
+<p><strong>UI:</strong> Click vào app → thấy resource tree, health status, sync history, logs.</p>
+</details>
+<hr />
+<h3 id="cau-10-lenh-nao-xoa-mot-application">Câu 10: Lệnh nào xóa một Application?<a class="headerlink" href="#cau-10-lenh-nao-xoa-mot-application" title="Permanent link">&para;</a></h3>
+<details class="success">
+<summary>📖 Đáp án</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Xóa app + Resources trên cluster (cascade delete)</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>argocd<span class="w"> </span>app<span class="w"> </span>delete<span class="w"> </span>&lt;app-name&gt;
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># Xóa app nhưng GIỮ resources trên cluster</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>argocd<span class="w"> </span>app<span class="w"> </span>delete<span class="w"> </span>&lt;app-name&gt;<span class="w"> </span>--cascade<span class="o">=</span><span class="nb">false</span>
+</code></pre></div>
+<p><strong><code>--cascade</code> (mặc định: true):</strong>
+- <code>true</code> — Xóa Application + tất cả K8s resources nó tạo ra
+- <code>false</code> — Chỉ xóa Application object, resources vẫn chạy (orphaned)</p>
+<p><strong>Khi nào dùng <code>--cascade=false</code>?</strong> Khi muốn chuyển app sang quản lý bởi tool khác/manual mà không muốn downtime.</p>
+</details>
+<hr />
+<h2 id="phan-2-repository-ket-noi-cau-11-20">Phần 2: Repository &amp; Kết Nối (Câu 11-20)<a class="headerlink" href="#phan-2-repository-ket-noi-cau-11-20" title="Permanent link">&para;</a></h2>
+<h3 id="cau-11-argocd-ho-tro-nhung-loai-repository-nao">Câu 11: ArgoCD hỗ trợ những loại repository nào?<a class="headerlink" href="#cau-11-argocd-ho-tro-nhung-loai-repository-nao" title="Permanent link">&para;</a></h3>
+<details class="success">
+<summary>📖 Đáp án</summary>
+<ol>
+<li><strong>Git Repository</strong> (HTTPS hoặc SSH)</li>
+<li>Public repo: không cần credentials</li>
+<li>
+<p>Private repo: username/password, SSH key, hoặc GitHub App</p>
+</li>
+<li>
+<p><strong>Helm Repository</strong></p>
+</li>
+<li>Public: <code>https://charts.bitnami.com/bitnami</code></li>
+<li>
+<p>Private: cần username/password</p>
+</li>
+<li>
+<p><strong>OCI Registry</strong> (Helm OCI)</p>
+</li>
+<li><code>oci://registry.example.com/charts</code></li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Thêm Git repo</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>argocd<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>https://github.com/user/repo.git
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># Thêm Helm repo</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>argocd<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>https://charts.bitnami.com/bitnami<span class="w"> </span>--type<span class="w"> </span>helm<span class="w"> </span>--name<span class="w"> </span>bitnami
+</code></pre></div>
+</details>
+<hr />
+<h3 id="cau-12-ket-noi-private-git-repo-bang-https-can-gi">Câu 12: Kết nối private Git repo bằng HTTPS cần gì?<a class="headerlink" href="#cau-12-ket-noi-private-git-repo-bang-https-can-gi" title="Permanent link">&para;</a></h3>
+<details class="success">
+<summary>📖 Đáp án</summary>
+<p>Cần <strong>username + personal access token</strong> (không dùng password thật):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>argocd<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>https://github.com/user/private-repo.git<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span>--username<span class="w"> </span>&lt;USERNAME&gt;<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span>--password<span class="w"> </span>&lt;GITHUB_TOKEN&gt;
+</code></pre></div>
+<p><strong>Tạo GitHub Token:</strong>
+1. GitHub → Settings → Developer Settings
+2. Personal Access Tokens → Fine-grained tokens
+3. Permissions: Repository → Contents → Read-only</p>
+<p><strong>ArgoCD lưu credentials ở đâu?</strong> Trong Kubernetes Secret <code>repo-&lt;hash&gt;</code> trong namespace <code>argocd</code>.</p>
+</details>
+<hr />
+<h3 id="cau-13-ket-noi-private-git-repo-bang-ssh-key-can-gi">Câu 13: Kết nối private Git repo bằng SSH key cần gì?<a class="headerlink" href="#cau-13-ket-noi-private-git-repo-bang-ssh-key-can-gi" title="Permanent link">&para;</a></h3>
+<details class="success">
+<summary>📖 Đáp án</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>argocd<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>git@github.com:user/private-repo.git<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span>--ssh-private-key-path<span class="w"> </span>~/.ssh/id_rsa
+</code></pre></div>
+<p><strong>Các bước:</strong>
+1. Generate SSH key: <code>ssh-keygen -t ed25519 -f ~/.ssh/argocd</code>
+2. Thêm public key vào GitHub: Settings → SSH Keys
+3. Thêm private key vào ArgoCD bằng lệnh trên</p>
+<p><strong>Lưu ý:</strong> ArgoCD lưu SSH key trong K8s Secret → nên dùng <strong>deploy key</strong> (read-only, per-repo) thay vì personal SSH key.</p>
+</details>
+<hr />
+<h3 id="cau-14-webhook-va-polling-khac-nhau-the-nao">Câu 14: Webhook và Polling khác nhau thế nào?<a class="headerlink" href="#cau-14-webhook-va-polling-khac-nhau-the-nao" title="Permanent link">&para;</a></h3>
+<details class="success">
+<summary>📖 Đáp án</summary>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Webhook</th>
+<th>Polling</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cách hoạt động</strong></td>
+<td>GitHub gửi HTTP POST khi có push</td>
+<td>ArgoCD tự kiểm tra Git định kỳ</td>
+</tr>
+<tr>
+<td><strong>Tốc độ</strong></td>
+<td>Gần như tức thì (~1-2 giây)</td>
+<td>Delay tối đa 3 phút</td>
+</tr>
+<tr>
+<td><strong>Cấu hình</strong></td>
+<td>Cần expose ArgoCD + setup webhook trên GitHub</td>
+<td>Không cần cấu hình (mặc định)</td>
+</tr>
+<tr>
+<td><strong>Firewall</strong></td>
+<td>ArgoCD phải accessible từ internet</td>
+<td>ArgoCD chỉ cần kết nối ra ngoài</td>
+</tr>
+<tr>
+<td><strong>Reliability</strong></td>
+<td>Webhook có thể miss (HTTP timeout)</td>
+<td>Luôn hoạt động</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Best practice:</strong> Dùng <strong>cả hai</strong> — Webhook cho tốc độ, Polling làm safety net.</p>
+</details>
+<hr />
+<h3 id="cau-15-polling-interval-mac-inh-la-bao-lau-thay-oi-the-nao">Câu 15: Polling interval mặc định là bao lâu? Thay đổi thế nào?<a class="headerlink" href="#cau-15-polling-interval-mac-inh-la-bao-lau-thay-oi-the-nao" title="Permanent link">&para;</a></h3>
+<details class="success">
+<summary>📖 Đáp án</summary>
+<p><strong>Mặc định: 3 phút (180 giây)</strong></p>
+<p><strong>Thay đổi qua ConfigMap:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nt">metadata</span><span class="p">:</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-cm</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="nt">data</span><span class="p">:</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">  </span><span class="nt">timeout.reconciliation</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;60s&quot;</span><span class="w">   </span><span class="c1"># Giảm xuống 1 phút</span>
+</code></pre></div></p>
+<p><strong>Hoặc tắt polling hoàn toàn:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nt">data</span><span class="p">:</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span><span class="nt">timeout.reconciliation</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0&quot;</span><span class="w">   </span><span class="c1"># Chỉ dùng webhook</span>
+</code></pre></div></p>
+<p><strong>⚠️ Giảm interval = tăng load trên Git server.</strong> Nếu có nhiều apps, nên dùng webhook thay vì giảm interval.</p>
+</details>
+<hr />
+<h3 id="cau-16-cau-hinh-webhook-cho-github-nhu-the-nao">Câu 16: Cấu hình webhook cho GitHub như thế nào?<a class="headerlink" href="#cau-16-cau-hinh-webhook-cho-github-nhu-the-nao" title="Permanent link">&para;</a></h3>
+<details class="success">
+<summary>📖 Đáp án</summary>
+<ol>
+<li><strong>Trên GitHub:</strong></li>
+<li>Repo → Settings → Webhooks → Add webhook</li>
+<li>Payload URL: <code>https://&lt;ARGOCD_URL&gt;/api/webhook</code></li>
+<li>Content type: <code>application/json</code></li>
+<li>Secret: (tùy chọn, để verify)</li>
+<li>
+<p>Events: "Just the push event"</p>
+</li>
+<li>
+<p><strong>Trên ArgoCD:</strong></p>
+</li>
+<li>Nếu dùng secret, thêm vào <code>argocd-secret</code>:
+     <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nt">stringData</span><span class="p">:</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">  </span><span class="nt">webhook.github.secret</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;YOUR_SECRET&gt;</span>
+</code></pre></div></li>
+</ol>
+<p><strong>ArgoCD tự nhận diện</strong> repo nào bị thay đổi và chỉ refresh app tương ứng.</p>
+</details>
+<hr />
+<h3 id="cau-17-argocd-repo-list-hien-thi-gi">Câu 17: <code>argocd repo list</code> hiển thị gì?<a class="headerlink" href="#cau-17-argocd-repo-list-hien-thi-gi" title="Permanent link">&para;</a></h3>
+<details class="success">
+<summary>📖 Đáp án</summary>
+<p>Hiển thị danh sách <strong>repositories đã được đăng ký</strong> trong ArgoCD:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>TYPE  NAME  REPO                                          INSECURE  OCI    LFS    CREDS  STATUS
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>git         https://github.com/user/repo.git              false     false  false  false  Successful
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>helm  bitnami  https://charts.bitnami.com/bitnami         false     false  false  false  Successful
+</code></pre></div>
+<p><strong>Các cột:</strong>
+- <code>TYPE</code> — git hoặc helm
+- <code>REPO</code> — URL repository
+- <code>INSECURE</code> — Có bỏ qua TLS không
+- <code>CREDS</code> — Có credentials không
+- <code>STATUS</code> — Kết nối thành công hay thất bại</p>
+<p><strong>Lưu ý:</strong> Public repos không cần đăng ký trước. ArgoCD tự kết nối khi tạo Application.</p>
+</details>
+<hr />
+<h3 id="cau-18-mot-application-co-the-tro-en-nhieu-path-trong-cung-repo-khong">Câu 18: Một Application có thể trỏ đến nhiều path trong cùng repo không?<a class="headerlink" href="#cau-18-mot-application-co-the-tro-en-nhieu-path-trong-cung-repo-khong" title="Permanent link">&para;</a></h3>
+<details class="success">
+<summary>📖 Đáp án</summary>
+<p><strong>Không!</strong> Mỗi Application chỉ có <strong>1 source</strong> (1 repo + 1 path).</p>
+<p><strong>Nhưng từ ArgoCD 2.6+</strong>, hỗ trợ <strong>Multiple Sources</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nt">spec</span><span class="p">:</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">  </span><span class="nt">sources</span><span class="p">:</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repoURL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/user/repo.git</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">manifests/base</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">      </span><span class="nt">targetRevision</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HEAD</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repoURL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/user/repo.git</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">manifests/config</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="w">      </span><span class="nt">targetRevision</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HEAD</span>
+</code></pre></div></p>
+<p><strong>Giải pháp thay thế:</strong>
+- Dùng Kustomize để reference nhiều thư mục
+- Tạo nhiều Applications (mỗi cái 1 path)
+- Dùng App of Apps pattern</p>
+</details>
+<hr />
+<h3 id="cau-19-co-the-deploy-nhieu-application-tu-cung-1-repo-khong">Câu 19: Có thể deploy nhiều Application từ cùng 1 repo không?<a class="headerlink" href="#cau-19-co-the-deploy-nhieu-application-tu-cung-1-repo-khong" title="Permanent link">&para;</a></h3>
+<details class="success">
+<summary>📖 Đáp án</summary>
+<p><strong>Có!</strong> Rất phổ biến. Mỗi Application trỏ đến <strong>path khác nhau</strong> trong cùng repo:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>repo/
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>├── apps/
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>│   ├── frontend/   ← App 1
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>│   ├── backend/    ← App 2
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>│   └── database/   ← App 3
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>argocd<span class="w"> </span>app<span class="w"> </span>create<span class="w"> </span>frontend<span class="w"> </span>--repo<span class="w"> </span>&lt;REPO&gt;<span class="w"> </span>--path<span class="w"> </span>apps/frontend<span class="w"> </span>...
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>argocd<span class="w"> </span>app<span class="w"> </span>create<span class="w"> </span>backend<span class="w"> </span>--repo<span class="w"> </span>&lt;REPO&gt;<span class="w"> </span>--path<span class="w"> </span>apps/backend<span class="w"> </span>...
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>argocd<span class="w"> </span>app<span class="w"> </span>create<span class="w"> </span>database<span class="w"> </span>--repo<span class="w"> </span>&lt;REPO&gt;<span class="w"> </span>--path<span class="w"> </span>apps/database<span class="w"> </span>...
+</code></pre></div>
+<p><strong>Đây chính là nền tảng</strong> cho App of Apps và ApplicationSet (Day 7-8).</p>
+</details>
+<hr />
+<h3 id="cau-20-application-bi-trang-thai-comparisonerror-la-do-au">Câu 20: Application bị trạng thái "ComparisonError" là do đâu?<a class="headerlink" href="#cau-20-application-bi-trang-thai-comparisonerror-la-do-au" title="Permanent link">&para;</a></h3>
+<details class="success">
+<summary>📖 Đáp án</summary>
+<p><strong>Nguyên nhân phổ biến:</strong></p>
+<ol>
+<li><strong>Git repo URL sai</strong> — Kiểm tra lại URL</li>
+<li><strong>Path không tồn tại</strong> — Thư mục trong repo không đúng</li>
+<li><strong>Credentials sai</strong> — Token hết hạn hoặc sai</li>
+<li><strong>Invalid YAML</strong> — File YAML bị lỗi syntax</li>
+<li><strong>Helm chart lỗi</strong> — Template có lỗi</li>
+<li><strong>Network</strong> — ArgoCD không kết nối được Git server</li>
+</ol>
+<p><strong>Debug:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>argocd<span class="w"> </span>app<span class="w"> </span>get<span class="w"> </span>&lt;app-name&gt;<span class="w">  </span><span class="c1"># Xem chi tiết lỗi</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>kubectl<span class="w"> </span>logs<span class="w"> </span>-n<span class="w"> </span>argocd<span class="w"> </span>deployment/argocd-repo-server<span class="w">  </span><span class="c1"># Xem log repo server</span>
+</code></pre></div></p>
+</details>
+<hr />
+<h2 id="phan-3-thuc-hanh-troubleshooting-cau-21-30">Phần 3: Thực Hành &amp; Troubleshooting (Câu 21-30)<a class="headerlink" href="#phan-3-thuc-hanh-troubleshooting-cau-21-30" title="Permanent link">&para;</a></h2>
+<h3 id="cau-21-tao-deployment-yaml-cho-nginx-voi-resource-limits-viet-mau">Câu 21: Tạo Deployment YAML cho Nginx với resource limits — viết mẫu?<a class="headerlink" href="#cau-21-tao-deployment-yaml-cho-nginx-voi-resource-limits-viet-mau" title="Permanent link">&para;</a></h3>
+<details class="success">
+<summary>📖 Đáp án</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="nt">metadata</span><span class="p">:</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx-demo</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx-demo</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="nt">spec</span><span class="p">:</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a><span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx-demo</span>
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a><span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a><span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a><span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
+<a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a><span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx-demo</span>
+<a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a><span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a><span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+<a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+<a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a><span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx:1.25-alpine</span>
+<a id="__codelineno-18-20" name="__codelineno-18-20" href="#__codelineno-18-20"></a><span class="w">          </span><span class="nt">ports</span><span class="p">:</span>
+<a id="__codelineno-18-21" name="__codelineno-18-21" href="#__codelineno-18-21"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+<a id="__codelineno-18-22" name="__codelineno-18-22" href="#__codelineno-18-22"></a><span class="w">          </span><span class="nt">resources</span><span class="p">:</span>
+<a id="__codelineno-18-23" name="__codelineno-18-23" href="#__codelineno-18-23"></a><span class="w">            </span><span class="nt">requests</span><span class="p">:</span>
+<a id="__codelineno-18-24" name="__codelineno-18-24" href="#__codelineno-18-24"></a><span class="w">              </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50m</span>
+<a id="__codelineno-18-25" name="__codelineno-18-25" href="#__codelineno-18-25"></a><span class="w">              </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">64Mi</span>
+<a id="__codelineno-18-26" name="__codelineno-18-26" href="#__codelineno-18-26"></a><span class="w">            </span><span class="nt">limits</span><span class="p">:</span>
+<a id="__codelineno-18-27" name="__codelineno-18-27" href="#__codelineno-18-27"></a><span class="w">              </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100m</span>
+<a id="__codelineno-18-28" name="__codelineno-18-28" href="#__codelineno-18-28"></a><span class="w">              </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">128Mi</span>
+<a id="__codelineno-18-29" name="__codelineno-18-29" href="#__codelineno-18-29"></a><span class="w">          </span><span class="nt">livenessProbe</span><span class="p">:</span>
+<a id="__codelineno-18-30" name="__codelineno-18-30" href="#__codelineno-18-30"></a><span class="w">            </span><span class="nt">httpGet</span><span class="p">:</span>
+<a id="__codelineno-18-31" name="__codelineno-18-31" href="#__codelineno-18-31"></a><span class="w">              </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
+<a id="__codelineno-18-32" name="__codelineno-18-32" href="#__codelineno-18-32"></a><span class="w">              </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+<a id="__codelineno-18-33" name="__codelineno-18-33" href="#__codelineno-18-33"></a><span class="w">            </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<a id="__codelineno-18-34" name="__codelineno-18-34" href="#__codelineno-18-34"></a><span class="w">          </span><span class="nt">readinessProbe</span><span class="p">:</span>
+<a id="__codelineno-18-35" name="__codelineno-18-35" href="#__codelineno-18-35"></a><span class="w">            </span><span class="nt">httpGet</span><span class="p">:</span>
+<a id="__codelineno-18-36" name="__codelineno-18-36" href="#__codelineno-18-36"></a><span class="w">              </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
+<a id="__codelineno-18-37" name="__codelineno-18-37" href="#__codelineno-18-37"></a><span class="w">              </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+<a id="__codelineno-18-38" name="__codelineno-18-38" href="#__codelineno-18-38"></a><span class="w">            </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+</code></pre></div>
+<p><strong>Giải thích resource:</strong>
+- <code>requests</code> — Tối thiểu cần để schedule pod
+- <code>limits</code> — Tối đa được phép sử dụng</p>
+</details>
+<hr />
+<h3 id="cau-22-tai-sao-nen-dung-nginx125-alpine-thay-vi-nginxlatest">Câu 22: Tại sao nên dùng <code>nginx:1.25-alpine</code> thay vì <code>nginx:latest</code>?<a class="headerlink" href="#cau-22-tai-sao-nen-dung-nginx125-alpine-thay-vi-nginxlatest" title="Permanent link">&para;</a></h3>
+<details class="success">
+<summary>📖 Đáp án</summary>
+<table>
+<thead>
+<tr>
+<th>Tag</th>
+<th>Vấn đề</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nginx:latest</code></td>
+<td>❌ Mỗi build có thể khác nhau, không reproducible</td>
+</tr>
+<tr>
+<td><code>nginx:1.25</code></td>
+<td>⚠️ Tốt hơn, nhưng patch version có thể thay đổi</td>
+</tr>
+<tr>
+<td><code>nginx:1.25-alpine</code></td>
+<td>✅ Pinned version + lightweight image</td>
+</tr>
+<tr>
+<td><code>nginx:1.25.3-alpine</code></td>
+<td>✅✅ Best — hoàn toàn pinned</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Lý do GitOps:</strong>
+- Git lưu declarative state → image tag phải <strong>immutable</strong>
+- <code>latest</code> tag bị overwrite mỗi khi có build mới → <strong>drift</strong> giữa Git và thực tế
+- Alpine image nhỏ hơn (~40MB vs ~180MB) → pull nhanh hơn, attack surface nhỏ hơn</p>
+</details>
+<hr />
+<h3 id="cau-23-service-type-nodeport-va-clusterip-khac-nhau-the-nao">Câu 23: Service type NodePort và ClusterIP khác nhau thế nào?<a class="headerlink" href="#cau-23-service-type-nodeport-va-clusterip-khac-nhau-the-nao" title="Permanent link">&para;</a></h3>
+<details class="success">
+<summary>📖 Đáp án</summary>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Truy cập từ</th>
+<th>Port range</th>
+<th>Use case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ClusterIP</strong></td>
+<td>Chỉ trong cluster</td>
+<td>Bất kỳ</td>
+<td>Service nội bộ (backend ↔ database)</td>
+</tr>
+<tr>
+<td><strong>NodePort</strong></td>
+<td>Bên ngoài cluster</td>
+<td>30000-32767</td>
+<td>Dev/testing, expose qua Node IP</td>
+</tr>
+<tr>
+<td><strong>LoadBalancer</strong></td>
+<td>Internet</td>
+<td>Bất kỳ</td>
+<td>Production (tạo LB trên cloud)</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># ClusterIP (mặc định)</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="nt">spec</span><span class="p">:</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterIP</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="c1"># NodePort</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="nt">spec</span><span class="p">:</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePort</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="w">      </span><span class="nt">nodePort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30080</span><span class="w">  </span><span class="c1"># Optional, K8s tự assign nếu không chỉ định</span>
+</code></pre></div>
+<p><strong>Minikube:</strong> Dùng <code>minikube service &lt;name&gt;</code> để truy cập NodePort service.</p>
+</details>
+<hr />
+<h3 id="cau-24-lam-sao-kiem-tra-application-a-sync-thanh-cong">Câu 24: Làm sao kiểm tra Application đã sync thành công?<a class="headerlink" href="#cau-24-lam-sao-kiem-tra-application-a-sync-thanh-cong" title="Permanent link">&para;</a></h3>
+<details class="success">
+<summary>📖 Đáp án</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># Cách 1: ArgoCD CLI</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>argocd<span class="w"> </span>app<span class="w"> </span>get<span class="w"> </span>&lt;app-name&gt;
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="c1"># Sync Status: Synced ✅</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="c1"># Health Status: Healthy ✅</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="c1"># Cách 2: kubectl</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>kubectl<span class="w"> </span>get<span class="w"> </span>application<span class="w"> </span>&lt;app-name&gt;<span class="w"> </span>-n<span class="w"> </span>argocd<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.sync.status}&#39;</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="c1"># → Synced</span>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>kubectl<span class="w"> </span>get<span class="w"> </span>application<span class="w"> </span>&lt;app-name&gt;<span class="w"> </span>-n<span class="w"> </span>argocd<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.health.status}&#39;</span>
+<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a><span class="c1"># → Healthy</span>
+<a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a>
+<a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a><span class="c1"># Cách 3: Chờ sync hoàn tất</span>
+<a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a>argocd<span class="w"> </span>app<span class="w"> </span><span class="nb">wait</span><span class="w"> </span>&lt;app-name&gt;<span class="w"> </span>--sync<span class="w"> </span>--health<span class="w"> </span>--timeout<span class="w"> </span><span class="m">120</span>
+</code></pre></div>
+<p><strong>Cả 2 điều kiện phải thỏa:</strong>
+- Sync Status = <strong>Synced</strong> (Git = Cluster)
+- Health Status = <strong>Healthy</strong> (Pods running, Services active)</p>
+</details>
+<hr />
+<h3 id="cau-25-argocd-app-diff-hien-thi-gi">Câu 25: <code>argocd app diff</code> hiển thị gì?<a class="headerlink" href="#cau-25-argocd-app-diff-hien-thi-gi" title="Permanent link">&para;</a></h3>
+<details class="success">
+<summary>📖 Đáp án</summary>
+<p>Hiển thị <strong>sự khác biệt</strong> giữa trạng thái mong muốn (Git) và trạng thái thực tế (Cluster):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>argocd<span class="w"> </span>app<span class="w"> </span>diff<span class="w"> </span>nginx-demo
+</code></pre></div>
+<p>Output tương tự <code>diff</code> — lines có <code>+</code> là trong Git nhưng chưa có trên cluster, <code>-</code> là trên cluster nhưng không có trong Git.</p>
+<p><strong>Khi nào dùng?</strong>
+- Debug OutOfSync — xem chính xác cái gì khác
+- Review trước khi sync — đảm bảo thay đổi đúng ý
+- Phát hiện drift — ai đó <code>kubectl edit</code> trực tiếp</p>
+</details>
+<hr />
+<h3 id="cau-26-loi-the-server-could-not-find-the-requested-resource-khi-sync-la-do-au">Câu 26: Lỗi "the server could not find the requested resource" khi sync là do đâu?<a class="headerlink" href="#cau-26-loi-the-server-could-not-find-the-requested-resource-khi-sync-la-do-au" title="Permanent link">&para;</a></h3>
+<details class="success">
+<summary>📖 Đáp án</summary>
+<p><strong>Nguyên nhân:</strong> YAML reference một <strong>API version</strong> hoặc <strong>resource kind</strong> không tồn tại trên cluster.</p>
+<p><strong>Ví dụ phổ biến:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># Lỗi: extensions/v1beta1 đã bị deprecated</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extensions/v1beta1</span><span class="w">  </span><span class="c1"># ❌</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="c1"># Sửa thành:</span>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span><span class="w">  </span><span class="c1"># ✅</span>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
+</code></pre></div></p>
+<p><strong>Debug:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1"># Kiểm tra API versions có sẵn</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>kubectl<span class="w"> </span>api-versions<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>networking
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="c1"># Kiểm tra resource có tồn tại</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>kubectl<span class="w"> </span>api-resources<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>ingress
+</code></pre></div></p>
+</details>
+<hr />
+<h3 id="cau-27-argocd-app-history-dung-e-lam-gi">Câu 27: <code>argocd app history</code> dùng để làm gì?<a class="headerlink" href="#cau-27-argocd-app-history-dung-e-lam-gi" title="Permanent link">&para;</a></h3>
+<details class="success">
+<summary>📖 Đáp án</summary>
+<p>Hiển thị <strong>lịch sử sync</strong> của Application:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>argocd<span class="w"> </span>app<span class="w"> </span><span class="nb">history</span><span class="w"> </span>&lt;app-name&gt;
+</code></pre></div>
+<p>Output:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>ID  DATE                  REVISION
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>1   2024-01-15 10:30:00   abc1234
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>2   2024-01-15 14:20:00   def5678
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>3   2024-01-16 09:00:00   ghi9012
+</code></pre></div></p>
+<p><strong>Use case:</strong>
+- Xem đã deploy lần nào, commit nào
+- Rollback về revision cũ: <code>argocd app rollback &lt;app&gt; &lt;ID&gt;</code>
+- Audit trail — ai deploy gì, khi nào</p>
+</details>
+<hr />
+<h3 id="cau-28-rollback-bang-argocd-cli-nhu-the-nao">Câu 28: Rollback bằng ArgoCD CLI như thế nào?<a class="headerlink" href="#cau-28-rollback-bang-argocd-cli-nhu-the-nao" title="Permanent link">&para;</a></h3>
+<details class="success">
+<summary>📖 Đáp án</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="c1"># Xem history</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>argocd<span class="w"> </span>app<span class="w"> </span><span class="nb">history</span><span class="w"> </span>&lt;app-name&gt;
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="c1"># Rollback về revision cũ</span>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>argocd<span class="w"> </span>app<span class="w"> </span>rollback<span class="w"> </span>&lt;app-name&gt;<span class="w"> </span>&lt;REVISION_ID&gt;
+</code></pre></div>
+<p><strong>⚠️ Lưu ý quan trọng:</strong>
+- Rollback chỉ là <strong>re-apply</strong> manifest cũ, không phải git revert
+- Nếu Auto-sync bật → ArgoCD sẽ <strong>sync lại về HEAD</strong> ngay lập tức, override rollback
+- <strong>Best practice GitOps:</strong> Rollback bằng <code>git revert</code> thay vì <code>argocd rollback</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="c1"># GitOps-correct rollback</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>git<span class="w"> </span>revert<span class="w"> </span>&lt;commit-hash&gt;
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>git<span class="w"> </span>push
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="c1"># → ArgoCD tự sync commit revert</span>
+</code></pre></div>
+</details>
+<hr />
+<h3 id="cau-29-nhieu-nguoi-cung-commit-vao-repo-thi-argocd-xu-ly-the-nao">Câu 29: Nhiều người cùng commit vào repo thì ArgoCD xử lý thế nào?<a class="headerlink" href="#cau-29-nhieu-nguoi-cung-commit-vao-repo-thi-argocd-xu-ly-the-nao" title="Permanent link">&para;</a></h3>
+<details class="success">
+<summary>📖 Đáp án</summary>
+<p>ArgoCD <strong>không quan tâm</strong> ai commit. Nó chỉ so sánh <strong>trạng thái cuối cùng</strong> (latest commit) của branch với cluster.</p>
+<p><strong>Flow:</strong>
+1. Dev A commit → HEAD = commit A
+2. Dev B commit → HEAD = commit B (ahead of A)
+3. ArgoCD detect HEAD = commit B → sync to B
+4. Cả thay đổi của A và B đều được apply</p>
+<p><strong>Conflict xảy ra khi:</strong>
+- 2 người sửa cùng file → Git conflict → phải resolve trước khi merge
+- Đây là Git conflict, không phải ArgoCD conflict</p>
+<p><strong>Best practice:</strong> Dùng <strong>Pull Request + review</strong> trước khi merge vào main branch.</p>
+</details>
+<hr />
+<h3 id="cau-30-tai-sao-nen-tach-git-repo-cho-config-manifests-va-source-code-app-code">Câu 30: Tại sao nên tách Git repo cho config (manifests) và source code (app code)?<a class="headerlink" href="#cau-30-tai-sao-nen-tach-git-repo-cho-config-manifests-va-source-code-app-code" title="Permanent link">&para;</a></h3>
+<details class="success">
+<summary>📖 Đáp án</summary>
+<p><strong>Best practice:</strong> Dùng <strong>2 repo riêng biệt:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Repo</th>
+<th>Nội dung</th>
+<th>Trigger</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>App repo</strong></td>
+<td>Source code, Dockerfile</td>
+<td>CI pipeline (build + test)</td>
+</tr>
+<tr>
+<td><strong>Config repo</strong></td>
+<td>K8s manifests, Helm values</td>
+<td>ArgoCD (deploy)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Lý do:</strong>
+1. <strong>Tách biệt concerns</strong> — Code change ≠ Config change
+2. <strong>Tránh trigger CI/CD lẫn nhau</strong> — Update YAML không nên trigger rebuild
+3. <strong>Fine-grained permissions</strong> — Dev sửa code, Ops sửa config
+4. <strong>Audit trail rõ ràng</strong> — Dễ track config changes riêng</p>
+<p><strong>Flow kết hợp:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>App repo commit → CI build image → Update image tag in Config repo → ArgoCD sync
+</code></pre></div></p>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.expand", "navigation.indexes", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

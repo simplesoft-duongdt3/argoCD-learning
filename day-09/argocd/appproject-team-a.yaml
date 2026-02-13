@@ -1,0 +1,52 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: team-a
+  namespace: argocd
+spec:
+  # Mô tả
+  description: "Project cho Team A - chỉ được deploy vào namespace team-a"
+
+  # Giới hạn source repos
+  sourceRepos:
+    - 'https://github.com/<YOUR_USERNAME>/argocd-demo-app.git'
+    # Hoặc cho phép tất cả: - '*'
+
+  # Giới hạn destination clusters + namespaces
+  destinations:
+    - server: https://kubernetes.default.svc
+      namespace: team-a-dev
+    - server: https://kubernetes.default.svc
+      namespace: team-a-staging
+
+  # Giới hạn loại resources được tạo
+  clusterResourceWhitelist: []  # Không cho tạo cluster-scoped resources
+  namespaceResourceWhitelist:
+    - group: ''       # core group
+      kind: Service
+    - group: ''
+      kind: ConfigMap
+    - group: ''
+      kind: Secret
+    - group: apps
+      kind: Deployment
+    - group: apps
+      kind: StatefulSet
+
+  # Roles trong project
+  roles:
+    - name: developer
+      description: "Developer - chỉ xem, không sync"
+      policies:
+        - p, proj:team-a:developer, applications, get, team-a/*, allow
+        - p, proj:team-a:developer, applications, sync, team-a/*, deny
+      groups:
+        - team-a-developers
+
+    - name: lead
+      description: "Tech Lead - xem và sync"
+      policies:
+        - p, proj:team-a:lead, applications, get, team-a/*, allow
+        - p, proj:team-a:lead, applications, sync, team-a/*, allow
+      groups:
+        - team-a-leads

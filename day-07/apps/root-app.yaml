@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root-app
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    # ⚠️ THAY ĐỔI URL REPO CỦA BẠN TẠI ĐÂY
+    repoURL: https://github.com/<YOUR_USERNAME>/argocd-demo-app.git
+    targetRevision: HEAD
+    path: apps/children  # Thư mục chứa các child Application YAML
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd   # Child apps được tạo trong namespace argocd
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true

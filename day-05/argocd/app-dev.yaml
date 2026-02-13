@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kustomize-dev
+  namespace: argocd
+spec:
+  project: default
+  source:
+    # ⚠️ THAY ĐỔI URL REPO CỦA BẠN TẠI ĐÂY
+    repoURL: https://github.com/<YOUR_USERNAME>/argocd-demo-app.git
+    targetRevision: HEAD
+    path: kustomize/overlays/dev
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kustomize-dev
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
