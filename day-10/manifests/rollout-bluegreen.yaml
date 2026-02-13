@@ -1,0 +1,62 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: bluegreen-demo
+spec:
+  replicas: 3
+  strategy:
+    blueGreen:
+      # Service pointing to active (current/blue) version
+      activeService: bluegreen-active
+      # Service pointing to preview (new/green) version
+      previewService: bluegreen-preview
+      # Tự promote sau 60s (hoặc bỏ để chờ manual)
+      autoPromotionEnabled: false
+      # Giữ ReplicaSet cũ bao lâu sau khi promote (để rollback nhanh)
+      scaleDownDelaySeconds: 30
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: bluegreen-demo
+  template:
+    metadata:
+      labels:
+        app: bluegreen-demo
+    spec:
+      containers:
+        - name: bluegreen-demo
+          image: argoproj/rollouts-demo:blue
+          ports:
+            - name: http
+              containerPort: 8080
+          resources:
+            requests:
+              cpu: 50m
+              memory: 32Mi
+            limits:
+              cpu: 100m
+              memory: 64Mi
+---
+# Active Service (Blue - production traffic)
+apiVersion: v1
+kind: Service
+metadata:
+  name: bluegreen-active
+spec:
+  selector:
+    app: bluegreen-demo
+  ports:
+    - port: 80
+      targetPort: 8080
+---
+# Preview Service (Green - testing traffic)
+apiVersion: v1
+kind: Service
+metadata:
+  name: bluegreen-preview
+spec:
+  selector:
+    app: bluegreen-demo
+  ports:
+    - port: 80
+      targetPort: 8080
