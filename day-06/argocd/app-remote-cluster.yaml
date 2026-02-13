@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-on-spoke
+  namespace: argocd
+spec:
+  project: default
+  source:
+    # ⚠️ THAY ĐỔI URL REPO CỦA BẠN TẠI ĐÂY
+    repoURL: https://github.com/<YOUR_USERNAME>/argocd-demo-app.git
+    targetRevision: HEAD
+    path: manifests
+  destination:
+    # ⚠️ THAY URL cluster spoke (lấy từ `argocd cluster list`)
+    server: https://<SPOKE_CLUSTER_SERVER>
+    namespace: remote-demo
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true

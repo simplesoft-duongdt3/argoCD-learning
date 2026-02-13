@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: appset-git-demo
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        # ⚠️ THAY ĐỔI URL REPO CỦA BẠN TẠI ĐÂY
+        repoURL: https://github.com/<YOUR_USERNAME>/argocd-demo-app.git
+        revision: HEAD
+        directories:
+          - path: apps/*   # Mỗi folder trong apps/ = 1 Application
+  template:
+    metadata:
+      name: '{{path.basename}}'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/<YOUR_USERNAME>/argocd-demo-app.git
+        targetRevision: HEAD
+        path: '{{path}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{path.basename}}'
+      syncPolicy:
+        automated:
+          selfHeal: true
+          prune: true
+        syncOptions:
+          - CreateNamespace=true

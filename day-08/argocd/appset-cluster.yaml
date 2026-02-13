@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: appset-cluster-demo
+  namespace: argocd
+spec:
+  generators:
+    - clusters: {}  # Match tất cả clusters đã registered
+  template:
+    metadata:
+      name: 'nginx-{{name}}'
+    spec:
+      project: default
+      source:
+        # ⚠️ THAY ĐỔI URL REPO CỦA BẠN TẠI ĐÂY
+        repoURL: https://github.com/<YOUR_USERNAME>/argocd-demo-app.git
+        targetRevision: HEAD
+        path: manifests
+      destination:
+        server: '{{server}}'
+        namespace: cluster-demo
+      syncPolicy:
+        automated:
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true

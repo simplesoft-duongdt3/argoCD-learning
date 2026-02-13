@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-rbac-cm
+  namespace: argocd
+data:
+  # Default policy cho user không có role
+  policy.default: role:readonly
+
+  # RBAC Policy
+  policy.csv: |
+    # Roles
+    # p, <role>, <resource>, <action>, <project>/<object>, <allow/deny>
+
+    # Admin role - toàn quyền
+    p, role:admin, *, *, */*, allow
+
+    # Developer role - chỉ xem
+    p, role:developer, applications, get, */*, allow
+    p, role:developer, applications, list, */*, allow
+    p, role:developer, repositories, get, *, allow
+    p, role:developer, clusters, get, *, allow
+    p, role:developer, projects, get, *, allow
+    p, role:developer, logs, get, */*, allow
+
+    # Deployer role - xem + sync
+    p, role:deployer, applications, get, */*, allow
+    p, role:deployer, applications, list, */*, allow
+    p, role:deployer, applications, sync, */*, allow
+    p, role:deployer, repositories, get, *, allow
+    p, role:deployer, clusters, get, *, allow
+    p, role:deployer, projects, get, *, allow
+
+    # Gán user vào role
+    g, developer, role:developer
+    g, deployer, role:deployer
